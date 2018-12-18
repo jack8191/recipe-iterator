@@ -1,0 +1,28 @@
+{
+  "name": "recipe-iterator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jack8191/recipe-iterator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jack8191/recipe-iterator/issues"
+  },
+  "homepage": "https://github.com/jack8191/recipe-iterator#readme"
+}
