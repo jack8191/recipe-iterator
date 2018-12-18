@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy:
+  provider: heroku
+  api_key:
+    secure: JTZwQAXyr9+k4zOO5R0Se9HwoGKvyojQvrBsqtM6/v2BhyBybpXfqN8oBt0DmeNkqhUSS4sws/nSrq+6zTAh1oJqFH97/Euy1wKgsIILxoE9N/tcaoLM/ofuc4P3QJbA956CB7N9H8uENk/p8A+mo0wrfKrUfvQrfwTBnip58wtIa9pKk/e2w+Y3kn1Xril3IgNJO+zVZVBmlWOqwCXU/KjSOL5D0Fd8wEK0homHFw1ILEnKnJVvGyQmv5lz720cj352O04jqkcoZFXpl2mpIu0GT+BRzVGnK4R02W1hQ+7VVPJKM6e2MiHH2h/loVscylkoZ6UBZ9UkZLVIhlpPt3RIB0HwfweojRPT88eIEdwwgoMhBUynvjAHqmjOKZ1TYaCEfAUaNgCzkR5QGe34V6p9PYN64iy2rMcmituUxGoCp4VFq9Kiyb+mBqG+LDVGuP6VvM7+0URskYIoVgbg1nopqu6JBtWQ/bsIzAuTLUD6bAdIPdDOGimrb1Cn+Ah0/Jzprjj2ua/i44tMnM0OjXWYXbMHAHHD9+1iXA4dX1pR+PQ+CsvQS6t0PrY4My+eEE1MOSPG5UtxzYn2ruB1Shhu4pWGedrXrP6dlmFTuQfnQoUKVKYlL9MRh+lgIKCVeytjvdLCR1GsqVSmVQAWKqV1Pwz6ZCzWxbtcxan3WyQ=
+  app: rocky-gorge-21319
+  on:
+    repo: jack8191/recipe-iterator
