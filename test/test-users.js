@@ -10,9 +10,7 @@ const {User} = require('../models');
 
 const expect = chai.expect;
 
-// This let's us make HTTP requests
-// in our tests.
-// see: https://github.com/chaijs/chai-http
+
 chai.use(chaiHttp);
 
 function tearDownDb() {
@@ -24,7 +22,7 @@ function tearDownDb() {
   })
 }
 
-describe('/api/user', function() {
+describe('/user', function() {
   const username = 'exampleUser';
   const password = 'examplePass';
  
@@ -48,12 +46,12 @@ describe('/api/user', function() {
     return tearDownDb()
   });
 
-  describe('/api/users', function() {
+  describe('/users', function() {
     describe('POST', function() {
       it('Should reject users with missing username', function() {
         return chai
           .request(app)
-          .post('/api/users')
+          .post('/users')
           .send({
             password
           })
@@ -75,7 +73,7 @@ describe('/api/user', function() {
       it('Should reject users with missing password', function() {
         return chai
           .request(app)
-          .post('/api/users')
+          .post('/users')
           .send({
             username
           })
@@ -98,7 +96,7 @@ describe('/api/user', function() {
       it('Should reject users with non-string username', function() {
         return chai
           .request(app)
-          .post('/api/users')
+          .post('/users')
           .send({
             username: 1234,
             password
@@ -123,7 +121,7 @@ describe('/api/user', function() {
       it('Should reject users with non-string password', function() {
         return chai
           .request(app)
-          .post('/api/users')
+          .post('/users')
           .send({
             username,
             password: 1234,
@@ -149,7 +147,7 @@ describe('/api/user', function() {
       it('Should reject users with non-trimmed username', function() {
         return chai
           .request(app)
-          .post('/api/users')
+          .post('/users')
           .send({
             username: ` ${username} `,
             password
@@ -174,7 +172,7 @@ describe('/api/user', function() {
       it('Should reject users with non-trimmed password', function() {
         return chai
           .request(app)
-          .post('/api/users')
+          .post('/users')
           .send({
             username,
             password: ` ${password} `
@@ -200,7 +198,7 @@ describe('/api/user', function() {
       it('Should reject users with empty username', function() {
         return chai
           .request(app)
-          .post('/api/users')
+          .post('/users')
           .send({
             username: '',
             password
@@ -226,7 +224,7 @@ describe('/api/user', function() {
       it('Should reject users with password less than ten characters', function() {
         return chai
           .request(app)
-          .post('/api/users')
+          .post('/users')
           .send({
             username,
             password: '123456789'
@@ -255,7 +253,7 @@ describe('/api/user', function() {
       it('Should reject users with password greater than 72 characters', function() {
         return chai
           .request(app)
-          .post('/api/users')
+          .post('/users')
           .send({
             username,
             password: new Array(73).fill('a').join('')
@@ -280,7 +278,7 @@ describe('/api/user', function() {
       });
       it('Should reject users with duplicate username', function() {
         // Create an initial user
-        chai.request(app).post('/api/users').send({
+        chai.request(app).post('/users').send({
           username,
           password
           
@@ -314,7 +312,7 @@ describe('/api/user', function() {
       it('Should create a new user', function() {
         return chai
           .request(app)
-          .post('/api/users')
+          .post('/users')
           .send({
             'username': usernameB,
             'password': passwordB

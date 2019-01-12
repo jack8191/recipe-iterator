@@ -8,34 +8,86 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="A tool to track development of recipes">
         <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    
+        
     </head>
-<body>
-    <header role="banner">
-        <h1>Recipe Iterator</h1>
-        <h2>A repository of food concepts and descrete attempts to cook them</h2>
-    </header> 
-    <main>
-        <form action="/api/auth/login" class="js-login-form">
-            <fieldset>
-            <label for="username">username
-            <input placeholder="Your Username" type="text" class="js-username" required>
-            </label>
-            <label for="password">username
-            <input placeholder="Your Password" type="hidden" class="js-password" required>
-            </label>
-            <button type="submit" id="loginbutton">
-                Login
-            </button>
-            </fieldset>
-            <p>No account?</p>
-            <button type="submit" id="accountformbutton">
-                Create an Account
-            </button>
-        </form>
-    </main>
-</body>
+    <body>
+        <header role="banner">
+            <h1>Recipe Iterator</h1>
+            <h2>A repository of food concepts and descrete attempts to cook them</h2>
+        </header> 
+        <main>
+            <div id="login">
+                <form id="login-form" class="js-login-form">
+                    <fieldset>
+                        <label for="username">username
+                            <input placeholder="Your Username" type="text" class="js-username" required>
+                        </label>
+                        <label for="password">username
+                            <input placeholder="Your Password" type="password" class="js-password" required>
+                        </label>
+                        <button type="submit" id="loginbutton">
+                            Login
+                        </button>
+                    </fieldset>
+                </form>
+                <p>No account?</p>
+                <button type="button" value="submit" id="accountformbutton">
+                    Create an Account
+                    
+                </button>
+            </div>
+            <div id="signup" class="hidden">
+                <form class="js-account-creation-form">
+                    <fieldset>
+                        <label for="username">username
+                            <input placeholder="Your Username" type="text" class="js-username" required>
+                        </label>
+                        <label for="password">username
+                            <input placeholder="Your Password" type="hidden" class="js-password" required>
+                        </label>
+                        <button type="submit" id="user-creation-button">
+                            Create Account
+                        </button>
+                    </fieldset>
+                </form>
+                <p>Already have an account?</p>
+                <button type="button" id="displayloginformbutton">
+                    Login
+                </button>
+            </div>
+            <div id="bucket-actions" class="hidden">
+                <button type="button" id="bucket-getter-button">
+                    View Your Buckets
+                </button>
+                <button type="button" id="bucket-creator-button">
+                    Create a New Bucket
+                </button>
+            </div>
+            <div id="bucket-creator-form" class="hidden">
+                <form id="bucket-maker">
+                    <fieldset>
+                        <label for="title">
+                            <input placeholder="Title" type="text" class="js-bucket-title">
+                        </label>
+                        <label for="Description">
+                            <input placeholder="Description" type="text" class="js-bucket-description">
+                        </label>
+                        <button type="submit" id="bucket-submit-button">
+                            Create Bucket
+                        </button>
+                    </fieldset>
+                </form>
+            </div>
+            <div id="bucket-zone">
+
+            </div>
+            <div id="iteration-zone">
+                
+            </div>
+        </main>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="app.js"></script>
+
+    </body>
 </html>

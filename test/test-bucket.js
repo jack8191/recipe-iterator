@@ -25,7 +25,7 @@ function tearDownDb() {
 
 function seedBucketData() {
     console.info('seeding bucket data')
-    const seedData = {_id: "5c2ed0479814ac43a5f26f62", title: "krangus", description: "wingus"}
+    const seedData = {_id: "5c2ed0479814ac43a5f26f62", title: "krangus", description: "wingus", user: '5af50ff5c082f1e92f83426c'}
     return Bucket.create(seedData)
 }
 
@@ -49,25 +49,6 @@ const token = jwt.sign(
     }
 )
 
-describe("/", function() {
-
-    before(function(){
-        return runServer()
-    })
-
-    after(function() {
-        return closeServer()
-    })
-
-    it('should return 404 when called', function() {
-        return chai
-            .request(app)
-            .get("/")
-            .then(function(res){
-                expect(res).to.have.status(404);
-            })
-    })
-})
 
 describe("/bucket", function() {
     before(function() {
@@ -86,10 +67,10 @@ describe("/bucket", function() {
         return closeServer()
     })
 
-    describe('GET all buckets', function() {
-        it('should return all buckets', function() {
+    describe('GET all buckets of a given user', function() {
+        it('should return all buckets owed by one user', function() {
         return chai.request(app)
-            .get('/bucket')
+            .get('/bucket/5af50ff5c082f1e92f83426c')
             .set('authorization', `Bearer ${token}`)
             .then(res => {
                 expect(res).to.have.status(200)
@@ -99,7 +80,7 @@ describe("/bucket", function() {
         })
         it('should return correct fields', function() {
             return chai.request(app)
-                .get('/bucket')
+                .get('/bucket/5af50ff5c082f1e92f83426c')
                 .set('authorization', `Bearer ${token}`)
                 .then(res => {
                     expect(res.body[0]).to.contain.all.keys(['id', 'title', 'description'])
@@ -107,18 +88,18 @@ describe("/bucket", function() {
         })
     })
 
-    describe('GET bucket by id', function() {
-        it('should return a single correct bucket', function() {
-            return chai.request(app)
-                .get('/bucket/5c2ed0479814ac43a5f26f62')
-                .set('authorization', `Bearer ${token}`)
-                .then(res => {
-                    //  console.log(bucket)
-                    expect(res.body.title).to.equal('krangus')
-                    expect(res.body.description).to.equal('wingus')
-                })
-        })
-    })
+    // describe('GET bucket by id', function() {
+    //     it('should return a single correct bucket', function() {
+    //         return chai.request(app)
+    //             .get('/bucket/5c2ed0479814ac43a5f26f62')
+    //             .set('authorization', `Bearer ${token}`)
+    //             .then(res => {
+    //                 console.log(res.body)
+    //                 expect(res.body.title).to.equal('krangus')
+    //                 expect(res.body.description).to.equal('wingus')
+    //             })
+    //     })
+    // })
 
     describe('bucket POST', function() {
         it('should create a new bucket based on the response body', function() {

@@ -28,7 +28,7 @@ const bucketSchema = mongoose.Schema({
 const iterationSchema = mongoose.Schema({
     //_id: Schema.Types.ObjectId,
     iterationOf: { type: Schema.Types.ObjectId, ref: 'Bucket', autopopulate: true },
-    date: Date,
+    date: String,
     ingredients: String,
     procedure: String,
     notes: String
@@ -59,6 +59,7 @@ iterationSchema.methods.serialize = function() {
 
 UserSchema.methods.serialize = function() {
     return {
+        id: this._id,
         username: this.username
     }
 }

@@ -14,9 +14,9 @@ function createAndDisplayNewIteration() {
     createNewBucket(displayNewIteration);
 }
 
-$(function() {
-    createAndDisplayNewIteration();
-})
+//$(function() {
+//    createAndDisplayNewIteration();
+//})
 
 //list all iterations GET
 
@@ -38,9 +38,9 @@ function getAndDisplayIterations() {
     getAllIterations(displayAllIterations);
 }
 
-$(function() {
-    getAndDisplayIterations();
-})
+//$(function() {
+//    getAndDisplayIterations();
+//})
 
 //edit iteration PATCH
 function updateIteration(callbackFn) {
@@ -59,9 +59,9 @@ function updateAndDisplayIteration() {
     displayUpdatedIteration(updateIteration)
 }
 
-$(function() {
-    updateAndDisplayIteration()
-})
+//$(function() {
+//    updateAndDisplayIteration()
+//})
 
 //delete iteration DELETE
 function deleteIteration(callbackFn) {
@@ -78,9 +78,9 @@ function deleteAndReportIteration() {
     displayIterationDeletion(deleteIteration)
 }
 
-$(function(){
-    deleteAndReportIteration()
-})
+//$(function(){
+//    deleteAndReportIteration()
+//})
 
 
 
@@ -102,7 +102,7 @@ const MOCK_ITERATION_LIST = {
     "iterations": [
         {
             "id": "777777",
-            "iteration of": "beans and greens",
+            "iteration of": "Beans with Greens",
             "date": "date",
             "ingredients":"black-eyed peas, corn oil, liquid smoke, collards",
             "procedure": "no soak, 3 hour simmer",
@@ -110,7 +110,7 @@ const MOCK_ITERATION_LIST = {
         },
         {
             "id": "888888",
-            "iteration of": "beans and greens",
+            "iteration of": "Beans with Greens",
             "date": "date",
             "ingredients":"kidney beans, endive, hot pepper",
             "procedure": "overnight soak, 2:1 water to bean ratio, 2 hour simmer, oil and mustard added 1/2 hour before end",
@@ -131,3 +131,5 @@ const UPDATED_ITERATION = {
 const ITERATION_PARAMS = {
     "id": "777777"
 }
+
+//module.exports = router
