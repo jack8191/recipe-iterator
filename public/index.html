@@ -17,14 +17,17 @@
             <h2>A repository of food concepts and descrete attempts to cook them</h2>
         </header> 
         <main>
+            <div id="message-zone">
+
+            </div>
             <div id="login">
                 <form id="login-form" class="js-login-form">
                     <fieldset>
                         <label for="username">username
-                            <input placeholder="Your Username" type="text" class="js-username" required>
+                            <input placeholder="Your Username" type="text" class="js-login-username" required>
                         </label>
-                        <label for="password">username
-                            <input placeholder="Your Password" type="password" class="js-password" required>
+                        <label for="password">password
+                            <input placeholder="Your Password" type="password" class="js-login-password" required>
                         </label>
                         <button type="submit" id="loginbutton">
                             Login
@@ -34,17 +37,16 @@
                 <p>No account?</p>
                 <button type="button" value="submit" id="accountformbutton">
                     Create an Account
-                    
                 </button>
             </div>
             <div id="signup" class="hidden">
                 <form class="js-account-creation-form">
                     <fieldset>
                         <label for="username">username
-                            <input placeholder="Your Username" type="text" class="js-username" required>
+                            <input placeholder="Your Username" type="text" class="js-new-username" required>
                         </label>
-                        <label for="password">username
-                            <input placeholder="Your Password" type="hidden" class="js-password" required>
+                        <label for="password">password
+                            <input placeholder="Your Password" type="password" class="js-new-password" required>
                         </label>
                         <button type="submit" id="user-creation-button">
                             Create Account

@@ -109,8 +109,8 @@ Bucket
 app.delete('/bucket/:id', jwtAuth, (req,res) => {
   Bucket
     .findByIdAndRemove(req.params.id)
-  Iteration
-    .deleteMany({ iterationOf: req.params.id })
+  // Iteration
+  //   .deleteMany({ iterationOf: req.params.id })
     .then(() => {
       res.status(204).json({ message: 'bucket deleted'})
     })
