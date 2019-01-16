@@ -1,5 +1,9 @@
 global.DATABASE_URL = 'mongodb://localhost/jwt-auth-demo-test';
+const chai = require("chai");
+const chaiHttp = require("chai-http");
+const expect = chai.expect;
 
+chai.use(chaiHttp);
 
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');

@@ -79,10 +79,11 @@ Bucket.find({user: req.params.userId})
 //view a specific bucket GET
 
 app.get('/bucket/:id', jwtAuth, (req, res) => {
-  Bucket.findById(req.params.id)
-    .then(bucket => {
-      res.json(bucket.serialize())
-    })
+  Bucket
+    .findById(req.params.id)
+    .then(
+      res.json(bucket => bucket.serialize())
+    )
     
     .catch(err => {
       console.error(err);
@@ -149,7 +150,7 @@ app.post('/iteration', jsonParser, jwtAuth, (req, res) => {
 })
 
 app.get('/iteration/:iterationOf', jsonParser, jwtAuth, (req, res) => {
-  Iteration.find({ iterationOf: req.param.iterationOf })
+  Iteration.find({ iterationOf: req.params.iterationOf })
   .then(iteration => {
     res.json(iteration.map(iteration => iteration.serialize()))
   })
@@ -161,7 +162,7 @@ app.get('/iteration/:iterationOf', jsonParser, jwtAuth, (req, res) => {
 
 app.patch('/iteration/:id', jsonParser, jwtAuth, (req, res) => {
   const updated = {};
-  const updateableFields = ['ingredients', 'procedure', 'notes'];
+  const updateableFields = ['date', 'ingredients', 'procedure', 'notes'];
   updateableFields.forEach(field => {
   if (field in req.body) {
     updated[field] = req.body[field];

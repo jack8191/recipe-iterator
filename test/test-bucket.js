@@ -88,18 +88,18 @@ describe("/bucket", function() {
         })
     })
 
-    // describe('GET bucket by id', function() {
-    //     it('should return a single correct bucket', function() {
-    //         return chai.request(app)
-    //             .get('/bucket/5c2ed0479814ac43a5f26f62')
-    //             .set('authorization', `Bearer ${token}`)
-    //             .then(res => {
-    //                 console.log(res.body)
-    //                 expect(res.body.title).to.equal('krangus')
-    //                 expect(res.body.description).to.equal('wingus')
-    //             })
-    //     })
-    // })
+    describe('GET bucket by id', function() {
+        it('should return a single correct bucket', function() {
+            return chai.request(app)
+                .get('/bucket/5c2ed0479814ac43a5f26f62')
+                .set('authorization', `Bearer ${token}`)
+                .then(res => {
+                    console.log(res.body)
+                    expect(res.body.title).to.equal('krangus')
+                    expect(res.body.description).to.equal('wingus')
+                })
+        })
+    })
 
     describe('bucket POST', function() {
         it('should create a new bucket based on the response body', function() {
