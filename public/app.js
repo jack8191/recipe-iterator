@@ -18,6 +18,7 @@ function handleLoginForm() {
                 localStorage.setItem('userId', res.userId)
                 $('#login').addClass('hidden')
                 $('#bucket-actions').removeClass('hidden')
+                $('#message-zone').html('<p>Welcome!</p>')
             },
             error: errorHandle
         })
@@ -49,7 +50,7 @@ function handleBucketGetterButton() {
 function handleBucketCreationFormViewButton() {
     $('#bucket-creator-button').click(event => {
         $('#bucket-creator-form').toggleClass('hidden')
-        if (!$('#bucket-creator-form').hasClass('hidden')){$('#bucket-creator-button').text('Hide New Bucket Form')}
+        if (!$('#bucket-creator-form').hasClass('hidden')){$('#bucket-creator-button').text('Hide This Form')}
         else{$('#bucket-creator-button').text('Create a New Bucket')}
     })
 
@@ -71,7 +72,7 @@ function handleAccountCreation() {
             success: function(res) {
                 $('#login').removeClass('hidden')
                 $('#signup').addClass('hidden')
-                $('#message-zone').html('<p>Account Created. You may now log in.')
+                $('#message-zone').html('<p>Account Created. You may now log in.</p>')
             },
             error: errorHandle
         })
@@ -96,6 +97,8 @@ function handleBucketCreation() {
             contentType: "application/json; charset=utf-8",
             success: function(res) {
                 getAllBuckets(displayAllBuckets)
+                $('#message-zone').html('<p>Bucket Created</p>')
+                $('#bucket-actions').addClass('hidden')
             },
             error: errorHandle
         })
@@ -146,7 +149,7 @@ function renderBucketResult(result) {
         <p>Title: ${result.title}</p>
         <p>Description: ${result.description}</p>
         <button class="iteration-view-button" data-iterationOf="${result.id}">View Iterations</button>
-        <button class="new-iteration-button" data-iterationOf="${result.id}">Create New Iteration</button>
+        <button class="new-iteration-button" data-iterationOf="${result.id}">New Iteration</button>
         <button class="bucket-edit-button" data-id="${result.id}">Edit Bucket</button>
         <button class="bucket-delete-button" data-id="${result.id}">Delete Bucket</button>
     </div>
@@ -168,6 +171,7 @@ function handleBucketDeletion() {
                 success: function(res) {
                     getAllBuckets(displayAllBuckets)
                     $('#message-zone').html('<p>Bucket deleted.</p>')
+                    $('#iteration-zone').html('')
                 },
                 error: errorHandle
             })
@@ -187,10 +191,11 @@ function handleBucketEditButton() {
             <div class="bucket-edit-form">
                 <form class="bucket-editor" data-id=${dataId}>
                     <fieldset>
-                    <label for="title">
+                    <legend>Edit One or More</legend>
+                    <label for="title">title
                         <input placeholder="Title" type="text" class="js-bucket-editor-title-${dataId}">
                     </label>
-                    <label for="Description">
+                    <label for="Description">description
                         <input placeholder="Description" type="text" class="js-bucket-editor-description-${dataId}">
                     </label>
                     <button type="submit" class="bucket-edit-submit" >
@@ -245,16 +250,17 @@ function handleCreateNewIterationButton() {
             <div class="iteration-creator-form">
                 <form class="iteration-maker" data-iterationOf=${dataIterationOf}>
                     <fieldset>
-                        <label for="date">
+                        <legend>Enter New Iteration Details</legend>
+                        <label for="date">date
                             <input placeholder="Date" type="text" class="js-iteration-date">
                         </label>
-                        <label for="Ingredients">
+                        <label for="Ingredients">ingredients
                             <input placeholder="Ingredients" type="text" class="js-iteration-ingredients">
                         </label>
-                        <label for="Procedure">
+                        <label for="Procedure">procedure
                             <input placeholder="Procedure" type="text" class="js-iteration-procedure">
                         </label>
-                        <label for="Notes">
+                        <label for="Notes">notes
                             <input placeholder="Notes" type="text" class="js-iteration-notes">
                         </label>
                         <button type="submit" class="new-iteration-submit-button">
@@ -293,8 +299,9 @@ function handleNewIterationCreation() {
             data: JSON.stringify(newIterationData),
             contentType: "application/json; charset=utf-8",
             success: function(res) {
-                $('#message-zone').html('<p>Iteration created. View it by clicking View Iterations under the relevant bucket.</p>')
+                $('#message-zone').html('<p>Iteration created. </p>')
                 $('.iteration-creator-form').remove()
+                getRelevantIterations(dataIterationOf, displayRelevantIterations)
             },
             error: errorHandle
         })
@@ -304,7 +311,7 @@ function handleNewIterationCreation() {
 function handleIterationViewButton() {
     $('#bucket-zone').on('click', '.iteration-view-button', event => {
         const iterationOf = $(event.target).attr('data-iterationOf')
-        const singleBucket = $(event.target).closest('.bucket').html()
+        const singleBucket = $(event.target).parent('div').clone()
         $('#bucket-zone').html(singleBucket)
         getRelevantIterations(iterationOf, displayRelevantIterations)
         //getOneBucket(iterationOf, displayOneBucket)
@@ -334,7 +341,7 @@ function renderIterationResult(result) {
     return `
     <div class="iteration">
         <h2>Iteration</h2>
-        <p>Prepared: ${result.date}</p>
+        <p>Prepared On: ${result.date}</p>
         <p>Ingredients: ${result.ingredients}</p>
         <p>Procedure: ${result.procedure}</p>
         <p>Notes: ${result.notes}</p>
@@ -348,7 +355,7 @@ function handleIterationDeletion() {
     $('#iteration-zone').on('click', '.iteration-delete-button', event =>{
         event.stopPropagation()
         const dataId = $(event.target).attr('data-id')
-        const iterationOf = $('#bucket-zone').children('.iteration-view-button').attr('data-iterationof')
+        const iterationOf = $('#bucket-zone').find('.iteration-view-button').attr('data-iterationof')
         if(confirm('Are you sure? This will permently delete the iteration.')){
         $.ajax({
                 type: 'DELETE',
@@ -378,16 +385,17 @@ function handleIterationEditButton() {
             <div class="iteration-edit-form">
                 <form class="iteration-editor" data-id=${dataId}>
                     <fieldset>
-                    <label for="date">
+                    <legend>Edit One or More</legend>
+                    <label for="date">date
                         <input placeholder="Date" type="text" class="js-iterator-editor-date-${dataId}">
                     </label>
-                    <label for="ingredients">
+                    <label for="ingredients">ingredients
                         <input placeholder="Ingredients" type="text" class="js-iterator-editor-ingredients-${dataId}">
                     </label>
-                    <label for="procedure">
+                    <label for="procedure">procedure
                         <input placeholder="Procedure" type="text" class="js-iterator-editor-procedure-${dataId}">
                     </label>
-                    <label for="notes">
+                    <label for="notes">notes
                         <input placeholder="Notes" type="text" class="js-iterator-editor-notes-${dataId}">
                     </label>
                     <button type="submit" class="iteration-edit-submit" >
@@ -409,7 +417,7 @@ function handleIterationEdit() {
         event.preventDefault()
         event.stopPropagation()
         const dataId = $(event.target).attr('data-id')
-        const iterationOf = $('#bucket-zone').children('.iteration-view-button').attr('data-iterationof')
+        const iterationOf = $('#bucket-zone').find('.iteration-view-button').attr('data-iterationof')
         let editedData = {}
         if ($(`.js-iterator-editor-date-${dataId}`).val()) {editedData.date = $(`.js-iterator-editor-date-${dataId}`).val()};
         if ($(`.js-iterator-editor-ingredients-${dataId}`).val()) {editedData.ingredients = $(`.js-iterator-editor-ingredients-${dataId}`).val()};

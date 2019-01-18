@@ -1,12 +1,246 @@
+/* css rest
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+/* fieldset, form, label, legend, */
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+ article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/*Site Stiles*/
 *{ 
     box-sizing: border-box;
 }
 
 body{
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Merriweather', serif;
     text-align: center;
+    background:black;
+    color: white;
+    line-height: 1.55;
+}
+
+#content-zone {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#bucket-zone, #iteration-zone {
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button{
+    display:inline-block;
+    padding:10px;
+    border:0.1em solid #FFFFFF;
+    margin-top:5px;
+    margin-bottom: 5px;
+    font-family: inherit;
+    border-radius:0.12em;
+    text-decoration:none;
+    font-weight:300;
+    background:black;
+    color:#FFFFFF;
+    text-align:center;
+    transition: all 0.2s;
+    width: 50%;
+    max-width: 300px;
+    }
+    button:hover{
+    color:#000000;
+    background-color:#FFFFFF;
+    }
+@media all and (max-width:30em){
+    button{
+        display:block;
+        margin:0.4em auto;
+    }
+}
+
+.bucket>button{
+    border:0.1em solid black;
+    background:white;
+    color: black;
+}
+
+.bucket>button:hover {
+    background-color:#000000;
+    color:#FFFFFF;
 }
 
 .hidden {
     display: none;
 }
+
+h1 { font-size: 46px; 
+    font-weight: 100; 
+    line-height: 50px; 
+    letter-spacing: 1px; 
+    padding: 20px; 
+}
+
+h3{
+    margin-top: 5px;
+}
+
+form {
+    max-width: 500px;
+    margin: auto;
+}
+
+fieldset {
+    padding: 20px;
+}
+
+label {
+    text-align: left;
+    display: block;
+    margin-bottom: .5rem;
+    padding: 12px 12px 12px 0;
+}
+
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+    margin-top: 5px;
+}
+
+
+
+.bucket {
+    /* display: block; */
+    background-color: white;
+    color: black;
+    max-width:500px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 3px;  
+    border:2px solid black;
+    flex: auto;
+}
+
+h2 {
+    font-size: 30px; 
+    font-weight: 75; 
+    line-height: 25px; 
+    letter-spacing: 1px; 
+    padding: 10px;
+    margin: 5px;
+}
+
+main>p{
+    font-size: 15px; 
+    font-weight: 70; 
+    line-height: 20px; 
+    letter-spacing: 1px; 
+    padding: 5px;
+    text-align: left;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.bucket>p, .iteration>p{
+    text-align: left;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+
+
+.iteration-view-button {
+    margin-top: 10px;
+}
+
+.bucket-delete-button {
+    margin-bottom: 10px;
+}
+
+.iteration{
+    /* display: block; */
+    color: white;
+    background-color: black;
+    max-width:500px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 3px;  
+    border:2px solid white;
+    flex: auto;
+}
+
+.iteration-edit-button {
+    margin-top: 10px;
+}
+
+.iteration-delete-button {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#message-zone {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    text-align: center;
+    max-width: 700px;
+    padding: 5px;
+}
+
+
+
+

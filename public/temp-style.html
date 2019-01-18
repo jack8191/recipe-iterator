@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Recipe Iterator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="A tool to track development of recipes">
+        <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+        
+    </head>
+    <body>
+        <header role="banner">
+            <h1>Recipe Iterator</h1>
+        </header> 
+        <main>
+            <div id="message-zone">
+
+            </div>
+            <div id="login">
+                <form id="login-form" class="js-login-form">
+                    <fieldset>
+                        <label for="username">username
+                            <input placeholder="Your Username" type="text" class="js-login-username" required>
+                        </label>
+                        <label for="password">password
+                            <input placeholder="Your Password" type="password" class="js-login-password" required>
+                        </label>
+                        <button type="submit" id="loginbutton">
+                            Login
+                        </button>
+                    </fieldset>
+                </form>
+                <h3>No account?</h3>
+                <button type="button" value="submit" id="accountformbutton">
+                    Create an Account
+                </button>
+            </div>
+            <div id="signup" class="">
+                <form class="js-account-creation-form">
+                    <fieldset>
+                        <label for="username">username
+                            <input placeholder="Your Username" type="text" class="js-new-username" required>
+                        </label>
+                        <label for="password">password
+                            <input placeholder="Your Password" type="password" class="js-new-password" required>
+                        </label>
+                        <button type="submit" id="user-creation-button">
+                            Create Account
+                        </button>
+                    </fieldset>
+                </form>
+                <h3>Already have an account?</h3>
+                <button type="button" id="displayloginformbutton">
+                    Login
+                </button>
+            </div>
+            <div id="bucket-actions" class="">
+                <button type="button" id="bucket-getter-button">
+                    View Your Buckets
+                </button>
+                <button type="button" id="bucket-creator-button">
+                    Create a New Bucket
+                </button>
+            </div>
+            <div id="bucket-creator-form" class="">
+                <form id="bucket-maker">
+                    <fieldset>
+                        <label for="title">
+                            <input placeholder="Title" type="text" class="js-bucket-title">
+                        </label>
+                        <label for="Description">
+                            <input placeholder="Description" type="text" class="js-bucket-description">
+                        </label>
+                        <button type="submit" id="bucket-submit-button">
+                            Create Bucket
+                        </button>
+                    </fieldset>
+                </form>
+            </div>
+            <div id="bucket-zone">
+                <div class="bucket">
+                    <h2>Bucket</h2>
+                    <p>Title: fuss</p>
+                    <p>Description: muss</p>
+                    <button class="iteration-view-button" data-iterationof="5c3e7b29ceda284c53fc5689">View Iterations</button>
+                    <button class="new-iteration-button" data-iterationof="5c3e7b29ceda284c53fc5689">New Iteration</button>
+                    <button class="bucket-edit-button" data-id="5c3e7b29ceda284c53fc5689">Edit Bucket</button>
+                    <button class="bucket-delete-button" data-id="5c3e7b29ceda284c53fc5689">Delete Bucket</button>
+                </div>
+                
+                <div class="bucket">
+                    <h2>Bucket</h2>
+                    <p>Title: Some fava beans and a nice chianti</p>
+                    <p>Description: You come in here with your cheap shoes and your good bag.</p>
+                    <button class="iteration-view-button" data-iterationof="5c3e7baf5c423f4c92cb5293">View Iterations</button>
+                    <button class="new-iteration-button" data-iterationof="5c3e7baf5c423f4c92cb5293">New Iteration</button>
+                    <button class="bucket-edit-button" data-id="5c3e7baf5c423f4c92cb5293">Edit Bucket</button>
+                    <button class="bucket-delete-button" data-id="5c3e7baf5c423f4c92cb5293">Delete Bucket</button>
+                </div>
+                </div>
+                <div id="iteration-zone">
+                    <div class="iteration">
+                        <h2>Iteration</h2>
+                        <p>Prepared: agfvwe</p>
+                        <p>Ingredients: 23rfq</p>
+                        <p>Procedure: grgrg</p>
+                        <p>Notes: rgrgrgr</p>
+                        <button class="iteration-edit-button" data-id="5c3e7bbd5c423f4c92cb5294">Edit Iteration</button>
+                        <button class="iteration-delete-button" data-id="5c3e7bbd5c423f4c92cb5294">Delete Iteration</button>
+                    </div>
+                    
+                    <div class="iteration">
+                        <h2>Iteration</h2>
+                        <p>Prepared: srgj</p>
+                        <p>Ingredients: ikhlo</p>
+                        <p>Procedure: ikhbido</p>
+                        <p>Notes: ikjgbhipfd</p>
+                        <button class="iteration-edit-button" data-id="5c3ef0f69fab5307d7834916">Edit Iteration</button>
+                        <button class="iteration-delete-button" data-id="5c3ef0f69fab5307d7834916">Delete Iteration</button>
+                    </div>
+                    </div>
+                    <div class="iteration-creator-form">
+                            <form class="iteration-maker" data-iterationOf=${dataIterationOf}>
+                                <fieldset>
+                                    <label for="date">
+                                        <input placeholder="Date" type="text" class="js-iteration-date">
+                                    </label>
+                                    <label for="Ingredients">
+                                        <label placeholder="Ingredients" type="text" class="js-iteration-ingredients">
+                                    </label>
+                                    <label for="Procedure">
+                                        <input placeholder="Procedure" type="text" class="js-iteration-procedure">
+                                    </label>
+                                    <label for="Notes">
+                                        <input placeholder="Notes" type="text" class="js-iteration-notes">
+                                    </label>
+                                    <button type="submit" class="new-iteration-submit-button">
+                                        Create Iteration
+                                    </button>
+                                </fieldset>
+                                </form>
+                            <button class="cancel-button">
+                                Hide Form
+                            </button>
+                        </div>
+                        <div class="iteration-edit-form">
+                                <form class="iteration-editor" data-id=${dataId}>
+                                    <fieldset>
+                                    <label for="date">
+                                        <input placeholder="Date" type="text" class="js-iterator-editor-date-${dataId}">
+                                    </label>
+                                    <label for="ingredients">
+                                        <input placeholder="Ingredients" type="text" class="js-iterator-editor-ingredients-${dataId}">
+                                    </label>
+                                    <label for="procedure">
+                                        <input placeholder="Procedure" type="text" class="js-iterator-editor-procedure-${dataId}">
+                                    </label>
+                                    <label for="notes">
+                                        <input placeholder="Notes" type="text" class="js-iterator-editor-notes-${dataId}">
+                                    </label>
+                                    <button type="submit" class="iteration-edit-submit" >
+                                        Edit Iteration
+                                    </button>
+                                    </fieldset>
+                                </form>
+                                <button class="cancel-button">
+                                    Hide Form
+                                </button>
+                            </div>
+        </main>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="app.js"></script>
+
+    </body>
+</html>

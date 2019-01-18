@@ -76,20 +76,6 @@ Bucket.find({user: req.params.userId})
   })
 })
 
-//view a specific bucket GET
-
-app.get('/bucket/:id', jwtAuth, (req, res) => {
-  Bucket
-    .findById(req.params.id)
-    .then(
-      res.json(bucket => bucket.serialize())
-    )
-    
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({ error: 'something went wrong' });
-  })
-})
 
 //update bucket PATCH
 app.patch('/bucket/:id', jsonParser, jwtAuth, (req,res) => {

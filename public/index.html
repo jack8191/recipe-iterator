@@ -1,95 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
     <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Recipe Iterator</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="A tool to track development of recipes">
-        <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-        
-    </head>
-    <body>
-        <header role="banner">
-            <h1>Recipe Iterator</h1>
-            <h2>A repository of food concepts and descrete attempts to cook them</h2>
-        </header> 
-        <main>
-            <div id="message-zone">
-
-            </div>
-            <div id="login">
-                <form id="login-form" class="js-login-form">
-                    <fieldset>
-                        <label for="username">username
-                            <input placeholder="Your Username" type="text" class="js-login-username" required>
-                        </label>
-                        <label for="password">password
-                            <input placeholder="Your Password" type="password" class="js-login-password" required>
-                        </label>
-                        <button type="submit" id="loginbutton">
+        <head>
+            <meta charset="utf-8" />
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <title>Recipe Iterator</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="description" content="A tool to track development of recipes">
+            <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+            <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+            
+        </head>
+        <body>
+            <header role="banner" aria-live="polite">
+                <h1>Recipe Iterator</h1>
+                <div id="message-zone">
+                    <p>Welcome! We have designed a tool to facilitate cooking exprimentation and development.
+                        Think of it as a backed-up version of a small spiral notebook in your apron, except this 
+                        one you can't spill sauce on or drop in a lit gas burner.
+                    </p>
+                    <p>First you'll create an account, log in, and create your first bucket. Think of a bucket
+                        as a vision, recipe or category of food that you want to develop over time.
+                        That's where iterations come in. Each associated with a bucket, they track details of specific times
+                        you cooked the dish specified in the bucket, with all the ingredients, methods, successes and failures 
+                        preserved. Never forget which herbs tasted so good in the soup that one time.
+                    </p>
+                    <p>Happy iterating!</p>
+                </div>
+            </header> 
+            <main>
+                <section id="account-actions" aria-live="polite">
+                    <div id="login">
+                        <form id="login-form" class="js-login-form">
+                            <fieldset>
+                                <legend>Enter Login Info</legend>
+                                <label for="username">username
+                                    <input placeholder="Your Username" type="text" class="js-login-username" required>
+                                </label>
+                                <label for="password">password
+                                    <input placeholder="Your Password" type="password" class="js-login-password" required>
+                                </label>
+                                <button type="submit" id="loginbutton">
+                                    Login
+                                </button>
+                            </fieldset>
+                        </form>
+                        <p>No account?</p>
+                        <button type="button" value="submit" id="accountformbutton">
+                            Create an Account
+                        </button>
+                    </div>
+                    <div id="signup" class="hidden">
+                        <form class="js-account-creation-form">
+                            <fieldset>
+                                <legend>Enter New Credentials</legend>
+                                <label for="username">username
+                                    <input placeholder="Your Username" type="text" class="js-new-username" required>
+                                </label>
+                                <label for="password">password
+                                    <input placeholder="Your Password" type="password" class="js-new-password" required>
+                                </label>
+                                <button type="submit" id="user-creation-button">
+                                    Create Account
+                                </button>
+                            </fieldset>
+                        </form>
+                        <p>Already have an account?</p>
+                        <button type="button" id="displayloginformbutton">
                             Login
                         </button>
-                    </fieldset>
-                </form>
-                <p>No account?</p>
-                <button type="button" value="submit" id="accountformbutton">
-                    Create an Account
-                </button>
-            </div>
-            <div id="signup" class="hidden">
-                <form class="js-account-creation-form">
-                    <fieldset>
-                        <label for="username">username
-                            <input placeholder="Your Username" type="text" class="js-new-username" required>
-                        </label>
-                        <label for="password">password
-                            <input placeholder="Your Password" type="password" class="js-new-password" required>
-                        </label>
-                        <button type="submit" id="user-creation-button">
-                            Create Account
-                        </button>
-                    </fieldset>
-                </form>
-                <p>Already have an account?</p>
-                <button type="button" id="displayloginformbutton">
-                    Login
-                </button>
-            </div>
-            <div id="bucket-actions" class="hidden">
-                <button type="button" id="bucket-getter-button">
-                    View Your Buckets
-                </button>
-                <button type="button" id="bucket-creator-button">
-                    Create a New Bucket
-                </button>
-            </div>
-            <div id="bucket-creator-form" class="hidden">
-                <form id="bucket-maker">
-                    <fieldset>
-                        <label for="title">
-                            <input placeholder="Title" type="text" class="js-bucket-title">
-                        </label>
-                        <label for="Description">
-                            <input placeholder="Description" type="text" class="js-bucket-description">
-                        </label>
-                        <button type="submit" id="bucket-submit-button">
-                            Create Bucket
-                        </button>
-                    </fieldset>
-                </form>
-            </div>
-            <div id="bucket-zone">
+                    </div>
+                </section>
+                <section id="bucket-viewing-and-creation" aria-live="polite">
 
-            </div>
-            <div id="iteration-zone">
-                
-            </div>
-        </main>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="app.js"></script>
-
-    </body>
-</html>
+                    <div id="bucket-actions" class="hidden">
+                        <button type="button" id="bucket-getter-button">
+                            View Your Buckets
+                        </button>
+                        <button type="button" id="bucket-creator-button">
+                            Create a New Bucket
+                        </button>
+                    </div>
+                    <div id="bucket-creator-form" class="hidden">
+                        <form id="bucket-maker">
+                            <fieldset>
+                                <legend>Enter New Bucket Details</legend>
+                                <label for="title">
+                                    <input placeholder="Title" type="text" class="js-bucket-title">
+                                </label>
+                                <label for="Description">
+                                    <input placeholder="Description" type="text" class="js-bucket-description">
+                                </label>
+                                <button type="submit" id="bucket-submit-button">
+                                    Create Bucket
+                                </button>
+                            </fieldset>
+                        </form>
+                    </div>
+                </section>
+                <section id="content-zone" aria-live="polite">
+                    <div id="bucket-zone">
+                        
+                    </div>
+                    <div id="iteration-zone">
+                        
+                    </div>
+                </section>
+            </main>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="app.js"></script>
+            
+        </body>
+        </html>

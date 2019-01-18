@@ -30,7 +30,7 @@ function seedBucketData() {
 
 function seedIterationData() {
     console.info('seeding iteration data')
-    const seedData = [{_id: "5c2bbef4fc8c0a27a0a20a91", iteraionOf: "5c2ed0479814ac43a5f26f62", ingredients: "Mumbus, bumbus", procedure: "slumbo, bumbo", notes: "not so good"}, {iteraionOf: "5c2ed0479814ac43a5f26f62", ingredients: "Mumbus", procedure: "slumbo", notes: "better with less stuff"}]
+    const seedData = [{_id: "5c2bbef4fc8c0a27a0a20a91", iterationOf: "5c2ed0479814ac43a5f26f62", ingredients: "Mumbus, bumbus", procedure: "slumbo, bumbo", notes: "not so good"}, {iteraionOf: "5c2ed0479814ac43a5f26f62", ingredients: "Mumbus", procedure: "slumbo", notes: "better with less stuff"}]
     return Iteration.insertMany(seedData)
 }
 
@@ -74,9 +74,9 @@ describe("/iteration", function() {
                 .set('authorization', `Bearer ${token}`)
                 .then(res => {
                     console.log(res)
-                    expect(res.body.ingredients).to.equal("Mumbus, bumbus")
-                    expect(res.body.procedure).to.equal("slumbo, bumbo")
-                    expect(res.body.notes).to.equal("not so good")
+                    expect(res.body[0].ingredients).to.equal("Mumbus, bumbus")
+                    expect(res.body[0].procedure).to.equal("slumbo, bumbo")
+                    expect(res.body[0].notes).to.equal("not so good")
                     // expect(res.body[1].ingredients).to.equal("Mumbus")
                     // expect(res.body[1].procedure).to.equal("slumbo")
                     // expect(res.body[1].notes).to.equal("better with less stuff")
